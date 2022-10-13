@@ -1,5 +1,8 @@
 #!/bin/bash
 
+git clone https://github.com/kulukami/clamav-mussels-cookbook.git
+
+
 # TARGET_ARCH="aarch64"
 if [ "$TARGET_ARCH" == "x86_64" ]; then
     echo "build x86_64"
@@ -8,7 +11,6 @@ else
     sed -i "s|x86_64-linux-musl|$TARGET_ARCH-linux-musl|gi" ` grep -rl x86_64-linux-musl ./clamav-mussels-cookbook`
 fi
 
-git clone https://github.com/kulukami/clamav-mussels-cookbook.git
 cd clamav-mussels-cookbook
 rm -rf  mussels/* &> /dev/null
 mkdir mussels &> /dev/null
