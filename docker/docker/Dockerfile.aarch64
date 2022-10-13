@@ -18,10 +18,10 @@ RUN python3 -m pip install mussels wheel
 
 RUN apt-get clean all
 
-RUN curl -O https://lf26-elkeid.bytetos.com/obj/elkeid-download/3rd_tools/aarch64-linux-musl-cross.tgz
-RUN tar zxvf aarch64-linux-musl-cross.tgz
-RUN mv aarch64-linux-musl-cross /opt/aarch64-linux-musl
-RUN rm -f aarch64-linux-musl-cross.tgz
+RUN curl -O https://lf26-elkeid.bytetos.com/obj/elkeid-download/3rd_tools/aarch64-linux-musl-native.tgz
+RUN tar zxvf aarch64-linux-musl-native.tgz
+RUN mv aarch64-linux-musl-native /opt/aarch64-linux-musl
+RUN rm -f aarch64-linux-musl-native.tgz
 
 ENV RUSTUP_HOME=/opt/rust
 ENV CARGO_HOME=/opt/rust
@@ -45,5 +45,5 @@ RUN  bash ./libclamav.sh
 
 RUN source /opt/rust/env
 RUN source ~/.bashrc
-ENV STDLIBCXX_STATIC_PATH=/opt/aarch64-linux-musl/aarch64-linux-musl/lib
+ENV STDLIBCXX_STATIC_PATH=/opt/aarch64-linux-musl/lib
 RUN rustup target add aarch64-unknown-linux-musl
