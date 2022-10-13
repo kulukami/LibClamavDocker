@@ -1,0 +1,48 @@
+name: Elkeid_plugin_scanner_aarch64
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    env:
+      PLATFORMS: linux/amd64, linux/arm64
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+    
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        password: ${{secrets.DOCKERHUB_TOKEN}}
+        username: ${{secrets.DOCKERHUB_USERNAME}}
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+      with:
+        platforms: linux/arm64
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Build
+      uses: docker/build-push-action@v3
+      with:
+        file: docker/Dockerfile.aarch64
+        push: true
+        tags: kulukami/libclamav_icm_aarch64:latest
+        context: .
+        platforms: linux/arm64
+
+    - name: Docker Hub Description
+      uses: peter-evans/dockerhub-description@v3
+      with:
+        password: ${{secrets.DOCKERHUB_TOKEN}}
+        repository: kulukami/libclamav_icm_aarch64
+        short-description: ${{github.event.repository.description}}
+        username: ${{secrets.DOCKERHUB_USERNAME}}
