@@ -34,6 +34,9 @@ RUN echo "OUTPUT=/opt/aarch64-linux-musl" >> config.mak
 RUN make 
 RUN make install
 
+WORKDIR /root
+RUN rm -rf musl-cross-make
+
 ENV RUSTUP_HOME=/opt/rust
 ENV CARGO_HOME=/opt/rust
 
