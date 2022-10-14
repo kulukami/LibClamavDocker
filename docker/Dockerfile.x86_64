@@ -56,5 +56,5 @@ RUN bash ./libclamav.sh
 
 RUN source /opt/rust/env
 RUN source ~/.bashrc
-ENV STDLIBCXX_STATIC_PATH=/opt/x86_64-linux-musl/lib
+ENV STDLIBCXX_STATIC_PATH=/opt/x86_64-linux-musl/x86_64-linux-musl/lib
 RUN rustup target add x86_64-unknown-linux-musl
