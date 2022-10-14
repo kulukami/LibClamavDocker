@@ -7,7 +7,7 @@ RUN apt update
 RUN apt-get install -y apt-utils gnutls-bin musl-tools musl-dev musl rsync
 RUN apt-get install -y apt-transport-https ca-certificates debian-archive-keyring
 RUN apt-get install -y bison autoconf gettext curl unzip git wget curl
-RUN apt-get install -y python3.9 python3-pip python3.9-dev libc-dev
+RUN apt-get install -y python3.9 python3-pip python3.9-dev libc-dev 
 RUN apt-get install -y clang llvm flex ninja-build lsb-release
 RUN apt-get install -y libstdc++-10-dev cmake make libpcre2-dev
 
@@ -19,21 +19,24 @@ RUN python3 -m pip install mussels wheel
 
 RUN apt-get clean all
 
-#RUN curl -O https://lf26-elkeid.bytetos.com/obj/elkeid-download/3rd_tools/x86_64-linux-musl-native.tgz
-#RUN tar zxvf x86_64-linux-musl-native.tgz
-#RUN mv x86_64-linux-musl-native /opt/x86_64-linux-musl
-#RUN rm -f x86_64-linux-musl-native.tgz
+RUN  dpkg --add-architecture i386
+RUN  apt update
+RUN  apt install -y libc6-i386
 
-WORKDIR /root
+RUN curl -O https://lf26-elkeid.bytetos.com/obj/elkeid-download/3rd_tools/x86_64-linux-musl-cross.tgz
+RUN tar zxvf x86_64-linux-musl-cross.tgz
+RUN mv x86_64-linux-musl-cross /opt/x86_64-linux-musl
+RUN rm -f x86_64-linux-musl-cross.tgz
 
-RUN git clone https://git.zv.io/toolchains/musl-cross-make.git
-WORKDIR /root/musl-cross-make
-RUN wget -O config.mak http://conf.musl.cc/plain_20211122_11-2-1.txt
-RUN echo "TARGET=x86_64-linux-musl" >> config.mak
-RUN echo "OUTPUT=/opt/x86_64-linux-musl" >> config.mak
-RUN make
-RUN make install
+#WORKDIR /root
 
+#RUN git clone https://git.zv.io/toolchains/musl-cross-make.git
+#WORKDIR /root/musl-cross-make
+#RUN wget -O config.mak http://conf.musl.cc/plain_20211122_11-2-1.txt
+#RUN echo "TARGET=x86_64-linux-musl" >> config.mak
+#RUN echo "OUTPUT=/opt/x86_64-linux-musl" >> config.mak
+#RUN make
+#RUN make install
 
 WORKDIR /root
 RUN rm -rf musl-cross-make
