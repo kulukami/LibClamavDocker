@@ -31,6 +31,7 @@ WORKDIR /root/musl-cross-make
 RUN wget -O config.mak http://conf.musl.cc/plain_20211122_11-2-1.txt
 RUN echo "TARGET=aarch64-unknown-linux-musl" >> config.mak
 RUN echo "OUTPUT=/opt/aarch64-unknown-linux-musl" >> config.mak
+RUN make 
 RUN make install
 
 
