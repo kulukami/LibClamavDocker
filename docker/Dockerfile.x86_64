@@ -25,7 +25,7 @@ RUN  apt install -y libc6-i386
 
 RUN curl -O https://lf26-elkeid.bytetos.com/obj/elkeid-download/3rd_tools/x86_64-linux-musl-cross-20221017.tgz
 RUN tar zxvf x86_64-linux-musl-cross-20221017.tgz
-RUN mv x86_64-linux-musl-cross /opt/x86_64-linux-musl
+RUN mv x86_64-linux-musl /opt/x86_64-linux-musl
 RUN rm -f x86_64-linux-musl-cross-20221017.tgz
 
 #WORKDIR /root
