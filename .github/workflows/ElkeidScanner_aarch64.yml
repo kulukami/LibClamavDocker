@@ -30,24 +30,22 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 
-    - name: Build
+    - name: Build 0.104
       uses: docker/build-push-action@v6
       with:
-        file: docker/Dockerfile.aarch64
+        file: docker/Dockerfile0.104.aarch64
         push: true
         tags: kulukami/libclamav_icm_aarch64:0.104
         context: .
-        build-args: CLAMAV_REF="0.104"
         platforms: linux/arm64
     
-    - name: Build
+    - name: Build 1.1
       uses: docker/build-push-action@v6
       with:
-        file: docker/Dockerfile.aarch64
+        file: docker/Dockerfile1.1.aarch64
         push: true
         tags: kulukami/libclamav_icm_aarch64:1.1
         context: .
-        build-args: CLAMAV_REF="1.1"
         platforms: linux/arm64
 
     - name: Docker Hub Description

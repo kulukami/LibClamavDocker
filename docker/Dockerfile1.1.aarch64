@@ -1,5 +1,5 @@
 FROM debian:bullseye as scanner_compiler_aarch64
-ARG CLAMAV_REF
+
 
 SHELL ["/bin/bash", "-c"]
 
@@ -56,9 +56,9 @@ WORKDIR /LibClamavDocker
 ENV PATH="/opt/rust/bin:/opt/aarch64-linux-musl/bin:${PATH}"
 ENV TARGET_ARCH="aarch64"
 
-RUN if [ "$CLAMAV_REF" != "" ] && [ "$CLAMAV_REF" = "0.104" ]; then bash ./libclamav.sh; else bash ./libclamav1.1.sh ;fi;
-
 RUN source /opt/rust/env
 RUN source ~/.bashrc
 ENV STDLIBCXX_STATIC_PATH=/opt/aarch64-linux-musl/aarch64-linux-musl/lib/
 RUN rustup target add aarch64-unknown-linux-musl
+
+RUN bash ./libclamav1.1.sh

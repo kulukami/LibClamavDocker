@@ -1,6 +1,4 @@
 FROM debian:bullseye as scanner_compiler_x86_64
-ARG CLAMAV_REF
-
 
 SHELL ["/bin/bash", "-c"]
 
@@ -61,9 +59,9 @@ WORKDIR /LibClamavDocker
 ENV PATH="/opt/rust/bin:/opt/x86_64-linux-musl/bin:${PATH}"
 ENV TARGET_ARCH="x86_64"
 
-RUN if [ "$CLAMAV_REF" != "" ] && [ "$CLAMAV_REF" = "0.104" ]; then bash ./libclamav.sh; else bash ./libclamav1.1.sh ;fi;
-
 RUN source /opt/rust/env
 RUN source ~/.bashrc
 ENV STDLIBCXX_STATIC_PATH=/opt/x86_64-linux-musl/x86_64-linux-musl/lib
 RUN rustup target add x86_64-unknown-linux-musl
+
+RUN bash ./libclamav1.1.sh

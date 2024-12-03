@@ -26,19 +26,17 @@ jobs:
     - name: Build
       uses: docker/build-push-action@v6
       with:
-        file: docker/Dockerfile.x86_64
+        file: docker/Dockerfile0.104.x86_64
         push: true
         context: .
-        build-args: CLAMAV_REF="0.104"
         tags: kulukami/libclamav_icm_x86_64:0.104
 
     - name: Build
       uses: docker/build-push-action@v6
       with:
-        file: docker/Dockerfile.x86_64
+        file: docker/Dockerfile1.1.x86_64
         push: true
         context: .
-        build-args: CLAMAV_REF="1.1"
         tags: kulukami/libclamav_icm_x86_64:1.1
 
     - name: Docker Hub Description
