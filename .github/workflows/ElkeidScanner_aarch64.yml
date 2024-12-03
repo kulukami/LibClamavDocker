@@ -35,8 +35,7 @@ jobs:
       with:
         file: docker/Dockerfile.aarch64
         push: true
-        tags: 
-          - kulukami/libclamav_icm_aarch64:0.104
+        tags: kulukami/libclamav_icm_aarch64:0.104
         context: .
         build-args: CLAMAV_REF="0.104"
         platforms: linux/arm64
@@ -46,8 +45,7 @@ jobs:
       with:
         file: docker/Dockerfile.aarch64
         push: true
-        tags: 
-          - kulukami/libclamav_icm_aarch64:1.1
+        tags: kulukami/libclamav_icm_aarch64:1.1
         context: .
         build-args: CLAMAV_REF="1.1"
         platforms: linux/arm64
