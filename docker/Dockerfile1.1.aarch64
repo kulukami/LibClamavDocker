@@ -57,8 +57,8 @@ ENV PATH="/opt/rust/bin:/opt/aarch64-linux-musl/bin:${PATH}"
 ENV TARGET_ARCH="aarch64"
 
 RUN source /opt/rust/env
-RUN source ~/.bashrc
+RUN source /root/.bashrc
 ENV STDLIBCXX_STATIC_PATH=/opt/aarch64-linux-musl/aarch64-linux-musl/lib/
 RUN rustup target add aarch64-unknown-linux-musl
 
-RUN bash ./libclamav1.1.sh
+RUN source /root/.bashrc && bash ./libclamav1.1.sh

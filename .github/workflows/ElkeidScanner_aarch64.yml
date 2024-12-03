@@ -3,7 +3,11 @@ name: Elkeid_plugin_scanner_aarch64
 on:
   push:
     branches:
-    - main
+      - main
+    paths:
+      - '**.aarch64'
+      - 'libclamav.sh'
+      - 'libclamav1.1.sh'
 
 jobs:
 
