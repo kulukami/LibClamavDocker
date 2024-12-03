@@ -28,6 +28,7 @@ jobs:
       with:
         file: docker/Dockerfile0.104.x86_64
         push: true
+        no-cache: true
         context: .
         tags: kulukami/libclamav_icm_x86_64:0.104
 
@@ -36,6 +37,7 @@ jobs:
       with:
         file: docker/Dockerfile1.1.x86_64
         push: true
+        no-cache: true
         context: .
         tags: kulukami/libclamav_icm_x86_64:1.1
 
