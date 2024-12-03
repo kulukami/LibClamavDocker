@@ -8,14 +8,13 @@ if [ "$TARGET_ARCH" == "x86_64" ]; then
     echo "build x86_64"
 else
     echo "change TARGET_ARCH into :$TARGET_ARCH"
-    sed -i "s|x86_64-linux-musl|$TARGET_ARCH-linux-musl|gi" ` grep -rl x86_64-linux-musl ./clamav-mussels-cookbook`
 fi
 
 cd clamav-mussels-cookbook
     rm -rf  mussels/* &> /dev/null
     mkdir mussels &> /dev/null
 
-    msl build libclamav_deps -t host-static -w mussels/work -i mussels/install
+    msl build libclamav_deps -t host-musl-$TARGET_ARCH -w mussels/work -i mussels/install
 
     if [ $? -ne 0 ]; then
         echo "mussels clamav_deps build failed"
@@ -25,9 +24,7 @@ cd clamav-mussels-cookbook
     fi
 
 cd -
-
-rm -rf clamav
-
+rm -rf clamav   &> /dev/null
 # make get clamav source code
 git clone https://github.com/kulukami/clamav.git
 cd clamav
