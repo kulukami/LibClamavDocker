@@ -61,7 +61,7 @@ WORKDIR /LibClamavDocker
 ENV PATH="/opt/rust/bin:/opt/x86_64-linux-musl/bin:${PATH}"
 ENV TARGET_ARCH="x86_64"
 
-RUN if [ "$CLAMAV_REF" != "" ] && [ "$CLAMAV_REF" = "0.104" ]; then bash ./libclamav.sh; else bash ./libclamav1.1.sh fi;
+RUN if [ "$CLAMAV_REF" != "" ] && [ "$CLAMAV_REF" = "0.104" ]; then bash ./libclamav.sh; else bash ./libclamav1.1.sh ;fi;
 
 RUN source /opt/rust/env
 RUN source ~/.bashrc
