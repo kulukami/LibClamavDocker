@@ -29,8 +29,7 @@ jobs:
         file: docker/Dockerfile.x86_64
         push: true
         context: .
-        build-args: 
-          - CLAMAV_REF="0.104"
+        build-args: CLAMAV_REF="0.104"
         tags: kulukami/libclamav_icm_x86_64:0.104
 
     - name: Build
@@ -39,8 +38,7 @@ jobs:
         file: docker/Dockerfile.x86_64
         push: true
         context: .
-        build-args: 
-          - CLAMAV_REF="1.1"
+        build-args: CLAMAV_REF="1.1"
         tags: kulukami/libclamav_icm_x86_64:1.1
 
     - name: Docker Hub Description

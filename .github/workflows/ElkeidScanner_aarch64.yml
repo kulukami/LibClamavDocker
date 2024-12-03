@@ -38,8 +38,7 @@ jobs:
         tags: 
           - kulukami/libclamav_icm_aarch64:0.104
         context: .
-        build-args: 
-          - CLAMAV_REF="0.104"
+        build-args: CLAMAV_REF="0.104"
         platforms: linux/arm64
     
     - name: Build
@@ -50,8 +49,7 @@ jobs:
         tags: 
           - kulukami/libclamav_icm_aarch64:1.1
         context: .
-        build-args: 
-          - CLAMAV_REF="1.1"
+        build-args: CLAMAV_REF="1.1"
         platforms: linux/arm64
 
     - name: Docker Hub Description
